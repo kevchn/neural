@@ -7,7 +7,7 @@ extra-deps:
 - pipes-4.2.0
 - pipes-safe-2.2.4
 - pipes-zlib-0.4.4.1
-resolver: lts-9.0
+resolver: lts-9.6
 nix:
     enable: false
     shell-file: shell.nix

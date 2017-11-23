@@ -26,7 +26,7 @@ main = flip evalRandT (mkStdGen 999999) $ do
     liftIO $ printf "generation  learning rate  batch error\n\n"
     (a, g) <- runEffect $
             cachingBatchP getSamples 60000 20 2000 100
-        >-> descentP m 1 (\g -> 0.4 * 100 / (100 + fromIntegral g))  
+        >-> descentP m 1 (\g -> 0.12 * 100 / (100 + fromIntegral g))  
         >-> reportTSP 1 report
         >-> consumeTSP check
     liftIO $ printf "\nreached accuracy of %f after %d generations\n" a g
@@ -100,6 +100,6 @@ mnistModel = mkStdClassifier c i where
       . cArr (Diff fromMatrix)
 
     conv2D :: Component (Volume 28 28 1) (Volume 8 8 2)
-    conv2D = convolution (Proxy :: DP.Proxy 5) 3 reLULayer
+    conv2D = convolution (Proxy :: DP.Proxy 7)  reLULayer
 
     i img = let m = generate $ \(x, y) -> fromIntegral (pixelAt img x y) in force m

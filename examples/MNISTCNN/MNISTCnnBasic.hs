@@ -100,6 +100,6 @@ mnistModel = mkStdClassifier c i where
       . cArr (Diff fromMatrix)
 
     conv2D :: Component (Volume 28 28 1) (Volume 8 8 2)
-    conv2D = convolution (Proxy :: DP.Proxy 7)  reLULayer
+    conv2D = convolution (Proxy :: DP.Proxy 7) 2 reLULayer
 
     i img = let m = generate $ \(x, y) -> fromIntegral (pixelAt img x y) in force m

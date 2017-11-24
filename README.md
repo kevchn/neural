@@ -5,10 +5,17 @@
 
 **Intention:** Demonstrate that Haskell's powerful abstractions allow for the implementation of sophisticated network architectures which would be difficult to do with standard approaches (i.e Tensorflow/Pytorch).
 
-#### Concrete Goals
-- Improve upon canonical MNIST example for the **neural** library developed by Lars Brünjes, using convolutional neural networks.
+#### Goals
+- [x] Improve upon canonical MNIST example for the **neural** library developed by Lars Brünjes, using convolutional neural networks.
+- [x] Optimize convnet MNIST example hyperparameters
+- [ ] Add tests
+- [ ] Add liquid verification
 
 #### Reach Goals (if time permits)
-- Create further examples for other datasets and network architectures
-- Submit open-source additions to the neural library
-- reate our own wrapper/addons to increase the library's functionality.
+- [ ] Create further examples for other datasets/architectures
+- [ ] Create own addons (pooling) to increase library functionality 
+
+#### Notes
+- Examples run extremely slowly, takes a long time to figure out hyperparameters 
+- Complicated architectures are nearly impossible to run for a 2016 MBP
+

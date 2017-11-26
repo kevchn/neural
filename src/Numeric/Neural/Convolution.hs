@@ -11,7 +11,6 @@ License     : MIT
 Maintainer  : brunjlar@gmail.com
 Stability   : experimental
 Portability : portable
-
 This module defines /convolutional/ layers.
 -}
 
@@ -21,11 +20,14 @@ module Numeric.Neural.Convolution
     , cover
     , cover'
     , convolution
+    , maxPooling
     ) where
 
 import Control.Category
 import Data.FixedSize
+import Data.Foldable          (toList)
 import Data.Functor.Compose   (Compose(..))
+import Data.Maybe             (fromJust)
 import Data.Proxy
 import Data.Utils
 import GHC.TypeLits
@@ -99,10 +101,27 @@ convolution :: forall s m n d m' n' d'.
 convolution ps stride l = cArr (Diff $ toVolume . unCompose) .
                           cConvolve l .
                           cArr (Diff $ Compose . cover' ps stride)
+  where _ = natVal (Proxy :: Proxy d)
 
+-- | Applies 'maxPooling' over a 'Volume'.
+--
+maxPooling :: forall s m n d m' n'.
+                (KnownNat s, KnownNat m, KnownNat n, KnownNat d, KnownNat m', KnownNat n')
+                => Proxy s              -- ^ a proxy to the region size
+                -> Int                  -- ^ the stride
+                -> Component (Volume m n d) (Volume m' n' d)
+maxPooling ps stride = cArr (Diff $ toVolume . unCompose) .
+                       cArr (Diff $ Compose . fmap (maximumF regionSize) . unCompose) .
+                       cArr (Diff $ Compose . cover' ps stride)
   where
+    maximumF :: (Foldable f, Ord a, Applicative g, Traversable g) => Int -> f a -> g a
+    maximumF xs = fromJust . fromList . maximumF' xs . toList
+    maximumF' _ [] = []
+    maximumF' split xs =
+      let (fst, tail) = splitAt split xs in 
+        let max = maximum fst in 
+          [max] ++ maximumF' split tail
+    regionSize = fromIntegral (natVal (Proxy :: Proxy s))
 
-    unCompose :: Compose f g a -> f (g a)
-    unCompose (Compose x) = x
-
-    _ = natVal (Proxy :: Proxy d)
+unCompose :: Compose f g a -> f (g a)
+unCompose (Compose x) = x

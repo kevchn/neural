@@ -97,16 +97,21 @@ mnistModel = mkStdClassifier c i where
     c = softmaxLayer
       . reLULayer
       . cArr (Diff toVector)
-    --   . maxPooling2D
+      . maxPooling2D
       . conv2D
-    --   . maxPooling2D2
+      . maxPooling2D2
       . conv2D2
     --   . dropOut (breaks)
       . cArr (Diff fromMatrix)
 
+    maxPooling2D :: Component (Volume 14 14 40) (Volume  7  7 40)
+    maxPooling2D = maxPooling (Proxy :: DP.Proxy 2) 2
 
     conv2D :: Component (Volume 14 14 20) (Volume 14 14 40)
     conv2D = convolution (Proxy :: DP.Proxy 6) 1 reLULayer
+
+    maxPooling2D2 :: Component (Volume 28 28 20) (Volume 14 14 20)
+    maxPooling2D2 = maxPooling (Proxy :: DP.Proxy 2) 2
 
     conv2D2 :: Component (Volume 28 28 1) (Volume 28 28 20)
     conv2D2 = convolution (Proxy :: DP.Proxy 6) 1 reLULayer

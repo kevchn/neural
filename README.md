@@ -13,7 +13,7 @@
 
 #### Reach Goals (if time permits)
 - [ ] Create further examples for other datasets/architectures
-- [ ] Create own addons (pooling) to increase library functionality 
+- [x] Create own addons (pooling) to increase library functionality 
 
 #### Notes
 - Examples run extremely slowly, takes a long time to figure out hyperparameters 

@@ -34,7 +34,8 @@ extra-source-files:
   .gitignore
   .ghci
   stack.yaml
-  README.markdown
+  README.md
+  README2.md
 
 homepage:            https://github.com/brunjlar/neural
 bug-reports:         https://github.com/brunjlar/neural/issues

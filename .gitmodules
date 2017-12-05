@@ -1,0 +1,3 @@
+[submodule "simpleNeural"]
+	path = simpleNeural
+	url = git@github.com:kevchn/simple-neural.git

@@ -1,5 +1,11 @@
 # Neural ConvNets in Haskell
 
+[![Build Status](https://travis-ci.org/kevchn/neural-convnets.svg?branch=master)](https://travis-ci.org/kevchn/neural-convnets)
+(for Neural ConvNets, fork of Neural)
+
+[![Build Status](https://travis-ci.org/kevchn/simpleNeural.svg?branch=master)](https://travis-ci.org/kevchn/simpleNeural)
+(for linked Simple Neural, independent project) 
+
 ### Project Description
 **Contributors:** Kevin Chen and Suteerth Vishnu of the University of Maryland, College Park.
 

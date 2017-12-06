@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/kevchn/neural-convnets.svg?branch=master)](https://travis-ci.org/kevchn/neural-convnets)
 (for Neural ConvNets, fork of Neural)
 
-[![Build Status](https://travis-ci.org/kevchn/simpleNeural.svg?branch=master)](https://travis-ci.org/kevchn/simpleNeural)
+[![Build Status](https://travis-ci.org/kevchn/simple-neural.svg?branch=master)](https://travis-ci.org/kevchn/simple-neural)
 (for linked Simple Neural, independent project) 
 
 ### Project Description
